@@ -15,9 +15,9 @@ if (toggle && navList) {
   });
 }
 
-// Reveal-on-scroll
+// Reveal-on-scroll – triggers as soon as element edges into view
 const revealTargets = document.querySelectorAll(
-  '.section-head, .card, .price-card, .steps li, .quote, .contact-form, .portrait, .stack'
+  '.section-head, .card, .price-card, .steps li, .quote, .faq-item, .contact-form, .portrait, .stack'
 );
 revealTargets.forEach((el) => el.classList.add('reveal'));
 
@@ -30,7 +30,7 @@ const io = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.14 }
+  { threshold: 0, rootMargin: '0px 0px -5% 0px' }
 );
 revealTargets.forEach((el) => io.observe(el));
 
