@@ -38,23 +38,57 @@ revealTargets.forEach((el) => io.observe(el));
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Contact form – friendly local feedback (no backend)
+// Contact form – Web3Forms submission with GDPR check
 const form = document.querySelector('.contact-form');
 if (form) {
-  form.addEventListener('submit', (e) => {
+  const note = form.querySelector('.form-note');
+  const setNote = (msg, color) => {
+    note.textContent = msg;
+    note.style.color = color || '';
+  };
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = form.querySelector('#name');
     const email = form.querySelector('#email');
+    const consent = form.querySelector('#consent');
+
     if (!name.value.trim() || !email.value.trim()) {
-      const note = form.querySelector('.form-note');
-      note.textContent = 'Vennligst fyll inn navn og e-post.';
-      note.style.color = '#a2574a';
+      setNote('Vennligst fyll inn navn og e-post.', '#a2574a');
       return;
     }
-    form.innerHTML =
-      '<div style="text-align:center;padding:28px 0;">' +
-      '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.6rem;color:#8c5d4f;margin:0 0 8px;">Tusen takk!</p>' +
-      '<p style="color:#6c5a55;margin:0;">Vi tar kontakt med deg innen 1–2 virkedager.</p>' +
-      '</div>';
+    if (!consent.checked) {
+      setNote('Du må samtykke til behandling av personopplysninger.', '#a2574a');
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sender …';
+    setNote('', '');
+
+    try {
+      const data = new FormData(form);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        form.innerHTML =
+          '<div style="text-align:center;padding:28px 0;">' +
+          '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.6rem;color:#8c5d4f;margin:0 0 8px;">Tusen takk!</p>' +
+          '<p style="color:#6c5a55;margin:0;">Vi tar kontakt med deg innen 1–2 virkedager.</p>' +
+          '</div>';
+      } else {
+        throw new Error(result.message || 'Ukjent feil');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send forespørsel';
+      setNote('Beklager, noe gikk galt. Prøv igjen, eller send oss en e-post.', '#a2574a');
+    }
   });
 }
