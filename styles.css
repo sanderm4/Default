@@ -332,11 +332,12 @@ p { margin: 0 0 1em; }
   line-height: 1.4;
 }
 
-/* Portrait / art */
+/* Portrait */
 .portrait {
   position: relative;
   aspect-ratio: 4 / 5;
   max-width: 440px;
+  width: 100%;
   margin-left: auto;
 }
 .portrait-frame {
@@ -348,25 +349,16 @@ p { margin: 0 0 1em; }
   box-shadow: var(--shadow);
   overflow: hidden;
 }
-.portrait-inner {
-  position: absolute;
-  inset: 24px;
-  border-radius: calc(var(--radius-lg) - 8px);
-  background:
-    radial-gradient(circle at 35% 35%, rgba(255,250,245,0.85) 0, rgba(255,250,245,0) 50%),
-    radial-gradient(circle at 70% 70%, rgba(180, 135, 120, 0.25) 0, transparent 60%),
-    linear-gradient(135deg, #f3d9ce 0%, #e2bdae 100%);
-}
-.portrait-inner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, transparent 60%, rgba(60, 40, 35, 0.12));
+.portrait-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
 }
 .portrait-caption {
   position: absolute;
-  bottom: 16px;
+  bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
@@ -374,25 +366,9 @@ p { margin: 0 0 1em; }
   font-size: 0.78rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-  z-index: 2;
-}
-.portrait-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-.portrait-photo + .portrait-caption::before {
-  content: "";
-  position: absolute;
-  inset: auto 0 -16px;
-  height: 80px;
-  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.45));
-  z-index: -1;
+  padding: 60px 16px 16px;
+  background: linear-gradient(180deg, transparent, rgba(40, 25, 22, 0.55));
+  pointer-events: none;
 }
 
 /* Treatments (Behandling og priser) */
@@ -569,33 +545,145 @@ p { margin: 0 0 1em; }
   .treatment { padding: 32px 24px 28px; }
 }
 
-/* Steps */
+/* CTA-rad nederst i Behandling-seksjonen */
+.cta-row {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.cta-row-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin: 0;
+  font-style: italic;
+}
+.cta-row .btn { padding: 16px 32px; font-size: 1rem; }
+
+/* Sticky mobil-CTA */
+.mobile-cta { display: none; }
+@media (max-width: 720px) {
+  .mobile-cta {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 250, 245, 0.96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 30px -20px rgba(60, 40, 35, 0.25);
+  }
+  .mobile-cta a {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 14px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: transform .15s ease;
+  }
+  .mobile-cta a:active { transform: scale(0.98); }
+  .mobile-cta a svg { width: 18px; height: 18px; }
+  .mobile-cta-call {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    flex-basis: 35%;
+    flex-grow: 0;
+  }
+  .mobile-cta-book {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  body { padding-bottom: 72px; }
+  .site-header { top: 0; }
+}
+
+/* Steps – Prosessen */
 .steps {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 28px;
-  counter-reset: step;
+  gap: 24px;
+  position: relative;
+}
+.steps::before {
+  content: "";
+  position: absolute;
+  top: 64px;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blush-deep) 15%, var(--blush-deep) 85%, transparent);
+  z-index: 0;
 }
 .steps li {
   position: relative;
-  padding: 32px 24px 28px;
+  z-index: 1;
+  padding: 36px 26px 30px;
   background: var(--cream);
   border-radius: var(--radius);
   border: 1px solid var(--line);
+  text-align: center;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
+.steps li:hover {
+  transform: translateY(-3px);
+  border-color: var(--blush-deep);
+  box-shadow: var(--shadow);
+}
+.step-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  background: var(--blush);
+  display: grid;
+  place-items: center;
+  color: var(--accent-deep);
+  position: relative;
+  z-index: 2;
+}
+.step-icon svg { width: 28px; height: 28px; }
 .step-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem;
-  color: var(--blush-deep);
+  font-size: 1rem;
+  color: var(--accent);
   font-weight: 500;
   display: block;
+  letter-spacing: 0.16em;
   margin-bottom: 8px;
 }
-.steps h3 { font-size: 1.2rem; margin-bottom: 6px; }
-.steps p { color: var(--ink-soft); font-size: 0.92rem; margin: 0; }
+.steps h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.steps p {
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+  margin: 0;
+  line-height: 1.55;
+}
+@media (max-width: 820px) {
+  .steps::before { display: none; }
+}
 
 /* Quotes */
 .quotes {
@@ -768,18 +856,28 @@ p { margin: 0 0 1em; }
   color: var(--muted);
   text-align: center;
 }
-.contact-form .btn { width: 100%; }
+.contact-form .btn {
+  width: 100%;
+  padding: 18px 26px;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
 
 .field-consent { margin-bottom: 22px; }
-.consent {
+.field label.consent {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-size: 0.86rem;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: var(--ink-soft);
-  line-height: 1.5;
+  line-height: 1.55;
+  letter-spacing: normal;
+  text-transform: none;
   cursor: pointer;
+  margin-bottom: 0;
 }
+.field label.consent a { text-decoration: underline; }
 .consent input[type="checkbox"] {
   flex-shrink: 0;
   width: 18px;
