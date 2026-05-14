@@ -350,10 +350,29 @@ p { margin: 0 0 1em; }
   left: 0;
   right: 0;
   text-align: center;
-  color: rgba(60, 40, 35, 0.7);
+  color: #fff;
   font-size: 0.78rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+.portrait-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.portrait-photo + .portrait-caption::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 -16px;
+  height: 80px;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.45));
+  z-index: -1;
 }
 
 /* Cards */
@@ -408,11 +427,99 @@ p { margin: 0 0 1em; }
   background: var(--accent);
 }
 
+/* Behandlinger – øvrige */
+.extras {
+  margin-top: 56px;
+  padding: 32px 32px 28px;
+  background: var(--cream);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.extras-title {
+  font-size: 1.3rem;
+  margin: 0 0 6px;
+}
+.extras-lede {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0 0 18px;
+}
+.extras-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 12px;
+}
+.extras-list li {
+  background: var(--bg-soft);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border: 1px solid var(--line);
+}
+
 /* Prices */
 .price-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 24px;
+}
+.price-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* Priser – tilleggsinfo */
+.price-extras {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 56px;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.price-extras-block h3 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+.price-extras-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.price-extras-block li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+}
+.price-extras-block li:last-child { border-bottom: 0; }
+.price-extras-block li span:last-child {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: var(--accent-deep);
+  font-weight: 500;
+  white-space: nowrap;
+  margin-left: 16px;
+}
+@media (max-width: 720px) {
+  .price-extras { grid-template-columns: 1fr; gap: 24px; }
 }
 .price-card {
   position: relative;
