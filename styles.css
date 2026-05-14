@@ -105,21 +105,33 @@ p { margin: 0 0 1em; }
 .brand {
   display: flex;
   flex-direction: column;
-  line-height: 1.05;
+  line-height: 1;
   color: var(--ink);
+  text-decoration: none;
 }
 .brand-main {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.65rem;
+  font-size: 2.3rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.brand-main em {
+  font-style: italic;
+  color: var(--accent-deep);
+  font-weight: 400;
 }
 .brand-sub {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.28em;
   color: var(--muted);
-  margin-top: 2px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+@media (max-width: 720px) {
+  .brand-main { font-size: 1.85rem; }
+  .brand-sub { font-size: 0.6rem; letter-spacing: 0.22em; }
 }
 
 .nav-list {
@@ -489,7 +501,7 @@ p { margin: 0 0 1em; }
 .treatment-amount {
   display: block;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.6rem;
+  font-size: clamp(2.1rem, 4vw, 2.6rem);
   color: var(--accent-deep);
   font-weight: 500;
   line-height: 1;
@@ -504,22 +516,20 @@ p { margin: 0 0 1em; }
 
 /* Priser – tilleggsinfo */
 .price-extras {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  margin-top: 64px;
-  max-width: 980px;
+  margin-top: 56px;
+  max-width: 920px;
   margin-left: auto;
   margin-right: auto;
 }
-.price-extras-block h3 {
-  font-size: 1.15rem;
+.price-extras-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
   text-align: center;
-  margin: 0 0 16px;
+  margin: 0 0 22px;
   color: var(--ink);
-  letter-spacing: 0.02em;
 }
-.price-extras-block ul {
+.price-extras-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -527,27 +537,35 @@ p { margin: 0 0 1em; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-.price-extras-block li {
+.price-extras-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
-  font-size: 0.93rem;
+  gap: 16px;
+  padding: 13px 22px;
+  font-size: 0.94rem;
   color: var(--ink-soft);
   border-bottom: 1px solid var(--line);
 }
-.price-extras-block li:last-child { border-bottom: 0; }
-.price-extras-block li span:last-child {
+.price-extras-list li:nth-child(odd) {
+  border-right: 1px solid var(--line);
+}
+.price-extras-list li:nth-last-child(-n+2) { border-bottom: 0; }
+.price-extras-list li span:last-child {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   color: var(--accent-deep);
   font-weight: 500;
   white-space: nowrap;
-  margin-left: 16px;
 }
 @media (max-width: 720px) {
-  .price-extras { grid-template-columns: 1fr; gap: 24px; margin-top: 48px; }
+  .price-extras { margin-top: 40px; }
+  .price-extras-list { grid-template-columns: 1fr; }
+  .price-extras-list li { border-right: 0 !important; }
+  .price-extras-list li:last-child { border-bottom: 0; }
   .treatment { padding: 32px 24px 28px; }
 }
 
@@ -620,7 +638,12 @@ p { margin: 0 0 1em; }
 }
 
 /* FAQ */
-.section-faq { background: var(--bg-soft); }
+.section-faq {
+  background: var(--bg-soft);
+  padding-top: clamp(48px, 6vw, 80px);
+  padding-bottom: clamp(56px, 8vw, 100px);
+}
+.section-faq .section-head { margin-bottom: 2.2rem; }
 .faq {
   display: grid;
   grid-template-columns: 1fr 1fr;
