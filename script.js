@@ -79,8 +79,8 @@ if (form) {
       if (response.ok && result.success) {
         form.innerHTML =
           '<div style="text-align:center;padding:28px 0;">' +
-          '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.6rem;color:#8c5d4f;margin:0 0 8px;">Tusen takk!</p>' +
-          '<p style="color:#6c5a55;margin:0;">Vi tar kontakt med deg innen 1–2 virkedager.</p>' +
+          '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.8rem;color:#7d4d3f;margin:0 0 8px;">Tusen takk!</p>' +
+          '<p style="color:#564541;margin:0;">Vi tar kontakt med deg innen 1–2 virkedager.</p>' +
           '</div>';
       } else {
         throw new Error(result.message || 'Ukjent feil');
