@@ -24,8 +24,7 @@
         </button>
         <ul id="primary-nav" class="nav-list">
           <li><a href="#om">Om oss</a></li>
-          <li><a href="#behandlinger">Behandlinger</a></li>
-          <li><a href="#priser">Priser</a></li>
+          <li><a href="#behandlinger">Behandling og priser</a></li>
           <li><a href="#prosessen">Prosessen</a></li>
           <li><a href="#faq">Spørsmål</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
@@ -102,141 +101,85 @@
       </div>
     </section>
 
-    <section id="behandlinger" class="section">
+    <section id="behandlinger" class="section section-blush">
       <div class="container">
         <div class="section-head">
-          <h2>Behandlinger</h2>
+          <h2>Behandling og priser</h2>
           <p class="section-lede">
-            Alle behandlinger starter med en samtale hvor vi finner form, farge og uttrykk sammen.
-            Vi bruker hudvennlige pigmenter og moderne teknikker for et naturlig, vakkert resultat.
+            Tre tilpassede behandlinger – konsultasjon, forming og pigmentering inkludert.
           </p>
         </div>
 
-        <div class="cards">
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">
+        <div class="treatments">
+          <article class="treatment">
+            <div class="treatment-icon" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
                 <path d="M6 28c6-10 18-12 28-8 3 1 6 3 8 6" />
                 <path d="M10 26c5-6 14-7 22-3" />
               </svg>
             </div>
-            <h3>Pigmentering av bryn</h3>
-            <p>
-              Myke, naturlige bryn med hårstrektekning, powder eller kombinasjonsteknikk –
-              rammer inn blikket og gir et uthvilt uttrykk.
+            <h3 class="treatment-title">Bryn</h3>
+            <p class="treatment-subtitle">Hårstråteknikk</p>
+            <p class="treatment-desc">
+              Naturlige, vakre bryn som rammer inn blikket og gir et uthvilt uttrykk.
             </p>
-            <ul class="card-list">
-              <li>Hårstrek / Microblading</li>
-              <li>Powder brows</li>
-              <li>Kombinasjonsbryn</li>
+            <ul class="treatment-list">
+              <li>Tilpasset ansiktsform</li>
+              <li>Naturlig fargevalg</li>
+              <li>Skånsom teknikk</li>
             </ul>
+            <div class="treatment-price">
+              <span class="treatment-amount">4 900,–</span>
+              <span class="treatment-note">1–2 refill inkludert innen 3 måneder</span>
+            </div>
           </article>
 
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">
+          <article class="treatment">
+            <div class="treatment-icon" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
                 <path d="M8 24c6-8 26-8 32 0" />
                 <path d="M8 24c6 8 26 8 32 0" />
                 <path d="M24 18v12" />
               </svg>
             </div>
-            <h3>Lip blush</h3>
-            <p>
-              En skånsom pigmentering som gir leppene en frisk, naturlig farge og
-              vakkert definerte konturer – uten den harde streken.
+            <h3 class="treatment-title">Lepper</h3>
+            <p class="treatment-subtitle">Full pigmentering</p>
+            <p class="treatment-desc">
+              Frisk, naturlig farge på leppene med vakkert definerte konturer – uten den harde streken.
             </p>
-            <ul class="card-list">
-              <li>Lip blush / fulltone</li>
-              <li>Konturering</li>
-              <li>Fargekorrigering</li>
+            <ul class="treatment-list">
+              <li>Myk konturering</li>
+              <li>Naturlig fargevalg</li>
+              <li>Fyldigere uttrykk</li>
             </ul>
+            <div class="treatment-price">
+              <span class="treatment-amount">4 900,–</span>
+              <span class="treatment-note">1–2 refill inkludert innen 3 måneder</span>
+            </div>
           </article>
 
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">
+          <article class="treatment">
+            <div class="treatment-icon" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
                 <path d="M6 26c6-10 30-10 36 0" />
                 <path d="M10 26h28" />
                 <circle cx="24" cy="26" r="3" fill="currentColor" stroke="none" />
               </svg>
             </div>
-            <h3>Eyeliner</h3>
-            <p>
-              Fra en fin, nesten usynlig lash line til en elegant definert strek –
-              for et våkent blikk som varer hele dagen.
+            <h3 class="treatment-title">Eyeliner</h3>
+            <p class="treatment-subtitle">Fra subtil til definert</p>
+            <p class="treatment-desc">
+              Fra en fin lash line til en elegant strek – for et våkent blikk som varer hele dagen.
             </p>
-            <ul class="card-list">
-              <li>Lash line enhancement</li>
-              <li>Klassisk eyeliner</li>
-              <li>Winged eyeliner</li>
+            <ul class="treatment-variants">
+              <li><span>Kun oppe</span><span>3 500,–</span></li>
+              <li><span>Oppe og nede</span><span>4 000,–</span></li>
+              <li><span>Bred eller med vipp</span><span>4 500,–</span></li>
             </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-                <path d="M24 6v8M24 34v8M6 24h8M34 24h8M11 11l6 6M31 31l6 6M37 11l-6 6M17 31l-6 6" />
-                <circle cx="24" cy="24" r="4" />
-              </svg>
+            <div class="treatment-price">
+              <span class="treatment-note">1–2 refill inkludert innen 3 måneder</span>
             </div>
-            <h3>Refill &amp; oppfriskning</h3>
-            <p>
-              For å bevare fargen og formen anbefaler vi en refill etter 4–6 uker,
-              og en oppfriskning hvert 1–2 år.
-            </p>
-            <ul class="card-list">
-              <li>4–6 ukers refill (1–2 inkludert)</li>
-              <li>Refill innen 18 mnd</li>
-              <li>Refill fra andre klinikker</li>
-            </ul>
           </article>
-        </div>
-
-        <div class="extras">
-          <h3 class="extras-title">Øvrige behandlinger</h3>
-          <p class="extras-lede">I tillegg til permanent makeup tilbyr Ellen også:</p>
-          <ul class="extras-list">
-            <li>Makeup­veiledning</li>
-            <li>Festmakeup og brudemakeup</li>
-            <li>Makeupkurs (4–6 personer)</li>
-            <li>Farge og forming av bryn</li>
-            <li>Farging av vipper</li>
-            <li>Farge vipper og bryn</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="priser" class="section section-blush">
-      <div class="container">
-        <div class="section-head">
-          <h2>Priser</h2>
-          <p class="section-lede">
-            Alle priser inkluderer konsultasjon, forming, pigmentering og pleiesett
-            for å ta best mulig vare på huden etter behandling.
-          </p>
-        </div>
-
-        <div class="price-grid price-grid-3">
-          <div class="price-card">
-            <h3>Bryn</h3>
-            <p class="price-desc">Hårstråteknikk</p>
-            <p class="price-amount">4 900,–</p>
-            <p class="price-note">1–2 refill er inkludert innen 3 måneder</p>
-          </div>
-          <div class="price-card highlighted">
-            <span class="badge">Populær</span>
-            <h3>Lepper</h3>
-            <p class="price-desc">Farge på hele leppen</p>
-            <p class="price-amount">4 900,–</p>
-            <p class="price-note">1–2 refill er inkludert innen 3 måneder</p>
-          </div>
-          <div class="price-card">
-            <h3>Eyeliner</h3>
-            <p class="price-desc">Kun oppe, oppe og nede, eller bred/vipp</p>
-            <p class="price-amount">fra 3 500,–</p>
-            <p class="price-note">1–2 refill er inkludert innen 3 måneder</p>
-          </div>
         </div>
 
         <div class="price-extras">
@@ -478,8 +421,7 @@
       <nav aria-label="Bunnmeny">
         <ul class="footer-nav">
           <li><a href="#om">Om oss</a></li>
-          <li><a href="#behandlinger">Behandlinger</a></li>
-          <li><a href="#priser">Priser</a></li>
+          <li><a href="#behandlinger">Behandling og priser</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
           <li><a href="personvern.html">Personvern</a></li>
         </ul>

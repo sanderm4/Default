@@ -17,7 +17,7 @@ if (toggle && navList) {
 
 // Reveal-on-scroll – triggers as soon as element edges into view
 const revealTargets = document.querySelectorAll(
-  '.section-head, .card, .price-card, .steps li, .quote, .faq-item, .contact-form, .portrait, .stack'
+  '.section-head, .treatment, .price-extras-block, .steps li, .quote, .faq-item, .contact-form, .portrait, .stack'
 );
 revealTargets.forEach((el) => el.classList.add('reveal'));
 
