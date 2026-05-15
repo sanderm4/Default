@@ -23,12 +23,12 @@
           <span class="sr-only">Meny</span>
         </button>
         <ul id="primary-nav" class="nav-list">
-          <li><a href="#om">Om Ellen</a></li>
+          <li><a href="#om">Om meg</a></li>
           <li><a href="#behandlinger">Behandling og priser</a></li>
           <li><a href="#prosessen">Prosessen</a></li>
           <li><a href="#faq">Spørsmål</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
-          <li><a href="#kontakt" class="btn btn-small">Bestill time</a></li>
+          <li><a href="#kontakt" class="btn btn-cta btn-small">Bestill time</a></li>
         </ul>
       </nav>
     </div>
@@ -38,14 +38,13 @@
     <section class="hero">
       <div class="container hero-inner">
         <p class="eyebrow">Permanent makeup · Larvik</p>
-        <h1>Naturlig skjønnhet,<br /><em>for en enklere hverdag!</em></h1>
+        <h1>Permanent makeup,<br /><em>for en enklere hverdag.</em></h1>
         <p class="lede">
-          Vakre, naturlige uttrykk som fremhever dine beste trekk. Tenk deg å våkne
-          klar for dagen hver morgen, med uthvilte øyne, vakker leppefarge og
-          perfekt formede bryn. Hos EMakeup i Larvik blir det din nye hverdag.
+          Vakre, naturlige uttrykk som fremhever dine beste trekk, for en enklere hverdag.
+          Velkommen til EMakeup, en del av Lisette hud &amp; helse i Larvik.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#kontakt">Bestill konsultasjon</a>
+          <a class="btn btn-cta" href="#kontakt">Bestill konsultasjon</a>
           <a class="btn btn-ghost" href="#behandlinger">Se behandlinger</a>
         </div>
         <ul class="hero-badges">
@@ -64,8 +63,9 @@
     <section id="om" class="section section-light">
       <div class="container grid-2">
         <div class="stack">
-          <h2>Om Ellen</h2>
+          <h2>Om meg</h2>
           <p class="section-lede">Møt kvinnen bak EMakeup.</p>
+
           <p>
             Hei, jeg heter Ellen Marthinsen og driver EMakeup, en naturlig del av
             Lisette hud &amp; helse i hjertet av Larvik. Hos meg møter du en rolig
@@ -82,7 +82,7 @@
           <div class="facts">
             <div>
               <span class="fact-num">10+</span>
-              <span class="fact-label">års erfaring med hud og velvære</span>
+              <span class="fact-label">års erfaring med skjønnhet og velvære</span>
             </div>
             <div>
               <span class="fact-num">1:1</span>
@@ -113,7 +113,7 @@
         </div>
 
         <div class="treatments">
-          <article class="treatment">
+          <article class="treatment" data-treatment="Bryn" tabindex="0" role="link" aria-label="Bestill bryn">
             <div class="treatment-icon" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
                 <path d="M6 28c6-10 18-12 28-8 3 1 6 3 8 6" />
@@ -136,7 +136,7 @@
             </div>
           </article>
 
-          <article class="treatment">
+          <article class="treatment" data-treatment="Lepper" tabindex="0" role="link" aria-label="Bestill lepper">
             <div class="treatment-icon" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
                 <path d="M8 24c6-8 26-8 32 0" />
@@ -160,7 +160,7 @@
             </div>
           </article>
 
-          <article class="treatment">
+          <article class="treatment" data-treatment="Eyeliner" tabindex="0" role="link" aria-label="Bestill eyeliner">
             <div class="treatment-icon" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
                 <path d="M6 26c6-10 30-10 36 0" />
@@ -184,23 +184,23 @@
           </article>
         </div>
 
+        <div class="cta-row">
+          <p class="cta-row-text">Klar for å starte? Konsultasjonen er gratis.</p>
+          <a class="btn btn-cta" href="#kontakt">Bestill din time</a>
+        </div>
+
         <div class="price-extras">
           <h3 class="price-extras-title">Øvrige behandlinger</h3>
           <ul class="price-extras-list">
-            <li><span>Refill innen 18 mnd</span><span>2 500,–</span></li>
-            <li><span>Makeupveiledning</span><span>690,–</span></li>
-            <li><span>Refill fra andre klinikker</span><span>3 000,–</span></li>
-            <li><span>Festmakeup / brud</span><span>800,–</span></li>
-            <li><span>Farge og forme bryn</span><span>350,–</span></li>
-            <li><span>Makeupkurs (4–6 pers.)</span><span>400,– pr.p.</span></li>
-            <li><span>Farge vipper</span><span>350,–</span></li>
-            <li><span>Farge vipper og bryn</span><span>650,–</span></li>
+            <li data-treatment="Refill / oppfriskning"><span>Refill innen 18 mnd</span><span>2 500,–</span></li>
+            <li data-treatment="Andre behandlinger"><span>Makeupveiledning</span><span>690,–</span></li>
+            <li data-treatment="Refill / oppfriskning"><span>Refill fra andre klinikker</span><span>3 000,–</span></li>
+            <li data-treatment="Andre behandlinger"><span>Festmakeup / brud</span><span>800,–</span></li>
+            <li data-treatment="Andre behandlinger"><span>Farge og forme bryn</span><span>350,–</span></li>
+            <li data-treatment="Andre behandlinger"><span>Makeupkurs (4–6 pers.)</span><span>400,– pr.p.</span></li>
+            <li data-treatment="Andre behandlinger"><span>Farge vipper</span><span>350,–</span></li>
+            <li data-treatment="Andre behandlinger"><span>Farge vipper og bryn</span><span>650,–</span></li>
           </ul>
-        </div>
-
-        <div class="cta-row">
-          <p class="cta-row-text">Klar for å starte? Konsultasjonen er gratis.</p>
-          <a class="btn btn-primary" href="#kontakt">Bestill din time</a>
         </div>
       </div>
     </section>
@@ -258,6 +258,35 @@
       </div>
     </section>
 
+    <section class="section section-light section-reviews">
+      <div class="container">
+        <div class="section-head">
+          <h2>Hva kundene sier</h2>
+          <p class="section-lede">Verifiserte 5-stjerners anmeldelser fra Google.</p>
+        </div>
+        <div class="quotes">
+          <figure class="quote">
+            <div class="quote-stars" aria-label="5 av 5 stjerner">★★★★★</div>
+            <blockquote>«Ellen er veldig profesjonell og dyktig i faget. Hun kommuniserer godt slik at man som kunde føler seg trygg og ivaretatt. Kunne ikke vært mer fornøyd, både med behandlingen og servicen.»</blockquote>
+            <figcaption>Mailen Kjær</figcaption>
+          </figure>
+          <figure class="quote">
+            <div class="quote-stars" aria-label="5 av 5 stjerner">★★★★★</div>
+            <blockquote>«En så trygg og fin behandler skal du lete lenge etter ❤️ Her blir du møtt med profesjonalitet, kvalitet og kompetanse. Tusen takk til flinke og dyktige Ellen! Jeg kommer tilbake!»</blockquote>
+            <figcaption>Mina Aschjem</figcaption>
+          </figure>
+          <figure class="quote">
+            <div class="quote-stars" aria-label="5 av 5 stjerner">★★★★★</div>
+            <blockquote>«Har en veldig god erfaring med behandlingen jeg har fått hos Ellen. Profesjonell og behagelig. Kan anbefales på det sterkeste.»</blockquote>
+            <figcaption>Solveig Lie</figcaption>
+          </figure>
+        </div>
+        <p class="reviews-link">
+          <a href="https://www.google.com/search?q=Lisette+hud+og+helse+Larvik" target="_blank" rel="noopener">Les flere anmeldelser på Google →</a>
+        </p>
+      </div>
+    </section>
+
     <section id="kontakt" class="section section-contact">
       <div class="container grid-2">
         <div class="stack">
@@ -274,7 +303,7 @@
             </li>
             <li>
               <span class="contact-label">E-post</span>
-              <a href="mailto:post@emakeup.no">post@emakeup.no</a>
+              <a href="mailto:marthinsen44@gmail.com">marthinsen44@gmail.com</a>
             </li>
             <li>
               <span class="contact-label">Adresse</span>
@@ -285,6 +314,16 @@
               <span>Man–ons 10–15 · Øvrige dager etter avtale</span>
             </li>
           </ul>
+
+          <div class="contact-promise">
+            <h3>Hva du kan forvente</h3>
+            <ul>
+              <li>Svar innen 1–2 virkedager</li>
+              <li>Gratis og uforpliktende konsultasjon</li>
+              <li>Trygg behandling i et rolig miljø</li>
+              <li>Personlig oppfølging etter behandling</li>
+            </ul>
+          </div>
         </div>
         <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
           <!-- Bytt ut access_key med din egen fra https://web3forms.com (gratis, kun e-post) -->
@@ -324,7 +363,7 @@
               </span>
             </label>
           </div>
-          <button class="btn btn-primary" type="submit">Send forespørsel</button>
+          <button class="btn btn-cta" type="submit">Send forespørsel</button>
           <p class="form-note">Vi tar kontakt innen 1–2 virkedager.</p>
         </form>
       </div>
@@ -408,6 +447,11 @@
             </div>
           </details>
         </div>
+
+        <div class="faq-cta">
+          <p>Har du andre spørsmål? Vi svarer gjerne.</p>
+          <a class="btn btn-cta" href="#kontakt" data-treatment="Generelt spørsmål">Send oss en melding</a>
+        </div>
       </div>
     </section>
   </main>
@@ -420,7 +464,7 @@
       </div>
       <nav aria-label="Bunnmeny">
         <ul class="footer-nav">
-          <li><a href="#om">Om Ellen</a></li>
+          <li><a href="#om">Om meg</a></li>
           <li><a href="#behandlinger">Behandling og priser</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
           <li><a href="personvern.html">Personvern</a></li>

@@ -38,6 +38,37 @@ revealTargets.forEach((el) => io.observe(el));
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// Pre-fill behandling-dropdown when clicking treatment cards / extra rows / faq-CTA
+function jumpToContact(treatment) {
+  const select = document.getElementById('treatment');
+  if (select && treatment) {
+    const match = Array.from(select.options).find(
+      (o) => o.value === treatment || o.textContent.trim() === treatment
+    );
+    if (match) select.value = match.value || match.textContent.trim();
+  }
+  const target = document.getElementById('kontakt');
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.querySelectorAll('[data-treatment]').forEach((el) => {
+  const treatment = el.getAttribute('data-treatment');
+  const handler = (e) => {
+    if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+    if (el.tagName === 'A' && el.getAttribute('href')) {
+      // anchor with href – let default jump happen, just set the dropdown
+      jumpToContact(treatment);
+      return;
+    }
+    e.preventDefault();
+    jumpToContact(treatment);
+  };
+  el.addEventListener('click', handler);
+  if (el.getAttribute('tabindex') !== null) {
+    el.addEventListener('keydown', handler);
+  }
+});
+
 // Contact form – Web3Forms submission with GDPR check
 const form = document.querySelector('.contact-form');
 if (form) {
