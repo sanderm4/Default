@@ -110,7 +110,7 @@ if (form) {
       if (response.ok && result.success) {
         form.innerHTML =
           '<div style="text-align:center;padding:28px 0;">' +
-          '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.9rem;color:#1a1108;margin:0 0 8px;">Tusen takk!</p>' +
+          '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.9rem;color:#46301f;margin:0 0 8px;">Tusen takk!</p>' +
           '<p style="color:#3d2d22;margin:0;">Jeg tar kontakt innen 1–2 virkedager.</p>' +
           '</div>';
       } else {
