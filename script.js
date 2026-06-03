@@ -110,8 +110,8 @@ document.querySelectorAll('[data-treatment]').forEach((el) => {
     const offset = slides[targetIndex].offsetLeft - slides[0].offsetLeft;
     track.style.transform = 'translateX(' + -offset + 'px)';
 
-    const hide = count <= 1;
-    [prevBtn, nextBtn].forEach((b) => { if (b) b.style.display = hide ? 'none' : ''; });
+    if (prevBtn) prevBtn.classList.toggle('hidden', page === 0 || count <= 1);
+    if (nextBtn) nextBtn.classList.toggle('hidden', count <= 1);
     if (dotsWrap) {
       Array.from(dotsWrap.children).forEach((d, i) =>
         d.classList.toggle('active', i === page)

@@ -773,43 +773,40 @@ p { margin: 0 0 1em; }
 
 /* Reviews carousel */
 .reviews-carousel {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  position: relative;
   max-width: 1080px;
   margin: 0 auto;
 }
 .reviews-viewport {
   overflow: hidden;
-  flex: 1;
-  min-width: 0;
+  width: 100%;
 }
 .reviews-track {
   display: flex;
-  gap: 0;
+  gap: 28px;
   transition: transform .5s cubic-bezier(.4, 0, .2, 1);
   will-change: transform;
 }
 .reviews-arrow {
-  flex: 0 0 auto;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: var(--cream);
-  color: var(--accent-deep);
-  display: grid;
-  place-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 6px;
   cursor: pointer;
-  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+  color: var(--accent-deep);
+  opacity: 0.45;
+  transition: opacity .2s ease;
+  z-index: 2;
+  line-height: 0;
 }
-.reviews-arrow:hover {
-  background: var(--cta);
-  border-color: var(--cta);
-  color: #fff;
-}
-.reviews-arrow:active { transform: scale(0.95); }
-.reviews-arrow svg { width: 20px; height: 20px; }
+.reviews-arrow:hover { opacity: 0.85; }
+.reviews-arrow:active { transform: translateY(-50%) scale(0.92); }
+.reviews-arrow svg { width: 16px; height: 28px; }
+.reviews-arrow.hidden { opacity: 0; pointer-events: none; }
+.reviews-prev { left: -32px; }
+.reviews-next { right: -32px; }
 .reviews-dots {
   display: flex;
   justify-content: center;
@@ -843,16 +840,15 @@ p { margin: 0 0 1em; }
 }
 .reviews-track .quote {
   flex: 0 0 calc((100% - 56px) / 3);
-  box-sizing: border-box;
-  margin: 10px 14px;
+  margin: 0;
 }
 @media (max-width: 819px) {
   .reviews-track .quote { flex: 0 0 calc((100% - 28px) / 2); }
 }
 @media (max-width: 599px) {
-  .reviews-track .quote { flex: 0 0 calc(100% - 28px); }
-  .reviews-carousel { gap: 8px; }
-  .reviews-arrow { width: 42px; height: 42px; }
+  .reviews-track .quote { flex: 0 0 100%; }
+  .reviews-prev { left: -26px; }
+  .reviews-next { right: -26px; }
 }
 .quote {
   margin: 0;
