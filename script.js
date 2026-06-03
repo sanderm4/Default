@@ -110,8 +110,8 @@ if (form) {
       if (response.ok && result.success) {
         form.innerHTML =
           '<div style="text-align:center;padding:28px 0;">' +
-          '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.8rem;color:#7d4d3f;margin:0 0 8px;">Tusen takk!</p>' +
-          '<p style="color:#564541;margin:0;">Vi tar kontakt med deg innen 1–2 virkedager.</p>' +
+          '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.9rem;color:#1a1108;margin:0 0 8px;">Tusen takk!</p>' +
+          '<p style="color:#3d2d22;margin:0;">Jeg tar kontakt innen 1–2 virkedager.</p>' +
           '</div>';
       } else {
         throw new Error(result.message || 'Ukjent feil');
@@ -119,7 +119,7 @@ if (form) {
     } catch (err) {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send forespørsel';
-      setNote('Beklager, noe gikk galt. Prøv igjen, eller send oss en e-post.', '#a2574a');
+      setNote('Beklager, noe gikk galt. Prøv igjen, eller send en e-post i stedet.', '#a2574a');
     }
   });
 }

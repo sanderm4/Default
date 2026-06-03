@@ -4,19 +4,21 @@
   --blush: #f4ddd2;
   --blush-deep: #e6c8bb;
   --cream: #fffaf2;
-  --ink: #221610;
-  --ink-soft: #463329;
-  --muted: #7a6357;
+  --ink: #1a1108;
+  --ink-soft: #3d2d22;
+  --muted: #6e5648;
   --line: #e2cfc3;
-  --accent: #a05a40;
-  --accent-deep: #4d2a1c;
-  --cta: #b56340;
-  --cta-hover: #963f1f;
+  --accent: #8a4b32;
+  --accent-deep: #2e1a0f;
+  --cta: #241710;
+  --cta-hover: #46301f;
   --gold: #c9a27a;
-  --shadow: 0 20px 60px -30px rgba(60, 30, 20, 0.3);
+  --shadow: 0 20px 60px -30px rgba(40, 22, 12, 0.35);
   --radius: 18px;
   --radius-lg: 28px;
   --maxw: 1160px;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
 }
 
 * { box-sizing: border-box; }
@@ -25,9 +27,9 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
-  color: var(--ink);
+  color: var(--ink-soft);
   background: var(--bg);
   line-height: 1.65;
   font-size: 17px;
@@ -52,15 +54,20 @@ a:hover { color: var(--ink); }
 }
 
 h1, h2, h3 {
-  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-weight: 500;
   color: var(--ink);
   letter-spacing: 0.2px;
   line-height: 1.15;
   margin: 0 0 .5em;
 }
-h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); }
-h1 em { font-style: italic; color: var(--accent-deep); font-weight: 400; }
+h1 { font-size: clamp(2.4rem, 5.2vw, 4.4rem); }
+h1 em {
+  font-style: italic;
+  color: var(--accent-deep);
+  font-weight: 500;
+  display: inline-block;
+}
 h2 { font-size: clamp(1.9rem, 3.8vw, 2.9rem); }
 h3 { font-size: 1.35rem; }
 
@@ -203,14 +210,14 @@ p { margin: 0 0 1em; }
 .btn-primary:hover { background: var(--accent-deep); color: var(--cream); transform: translateY(-1px); }
 .btn-cta {
   background: var(--cta);
-  color: #fff;
-  box-shadow: 0 8px 24px -10px rgba(181, 99, 64, 0.55);
+  color: #fff8ed;
+  box-shadow: 0 10px 28px -12px rgba(30, 18, 10, 0.55);
 }
 .btn-cta:hover {
   background: var(--cta-hover);
-  color: #fff;
+  color: #fff8ed;
   transform: translateY(-1px);
-  box-shadow: 0 12px 28px -10px rgba(150, 63, 31, 0.6);
+  box-shadow: 0 14px 32px -12px rgba(40, 24, 14, 0.65);
 }
 .btn-ghost {
   background: transparent;
@@ -223,8 +230,8 @@ p { margin: 0 0 1em; }
 .hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(64px, 9vw, 120px) 0 clamp(80px, 12vw, 160px);
-  background: linear-gradient(180deg, var(--bg) 0%, var(--cream) 60%, var(--bg-soft) 100%);
+  padding: clamp(64px, 9vw, 120px) 0 clamp(72px, 10vw, 130px);
+  background: linear-gradient(180deg, #f8efe0 0%, var(--bg) 60%, var(--bg-soft) 100%);
 }
 .hero-inner {
   position: relative;
@@ -394,6 +401,7 @@ p { margin: 0 0 1em; }
   gap: 28px;
   max-width: 1080px;
   margin: 0 auto;
+  align-items: stretch;
 }
 .treatment {
   position: relative;
@@ -405,11 +413,17 @@ p { margin: 0 0 1em; }
   padding: 40px 32px 32px;
   cursor: pointer;
   transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  overflow: hidden;
 }
 .treatment[data-treatment]:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow);
   border-color: var(--accent);
+}
+.treatment-top {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .treatment-icon {
   width: 52px;
@@ -423,7 +437,7 @@ p { margin: 0 0 1em; }
 }
 .treatment-icon svg { width: 26px; height: 26px; }
 .treatment-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   font-size: clamp(1.85rem, 2.4vw, 2.2rem);
   font-weight: 500;
   color: var(--ink);
@@ -431,10 +445,10 @@ p { margin: 0 0 1em; }
   line-height: 1.1;
 }
 .treatment-subtitle {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
-  color: var(--accent-deep);
+  color: var(--accent);
   margin: 0 0 18px;
 }
 .treatment-desc {
@@ -449,7 +463,7 @@ p { margin: 0 0 1em; }
   margin: 0 0 24px;
 }
 .treatment-list li {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--ink-soft);
   padding: 5px 0 5px 22px;
   position: relative;
@@ -461,50 +475,100 @@ p { margin: 0 0 1em; }
   width: 12px; height: 1px;
   background: var(--accent);
 }
+
+/* Pris-blokk i kort – flukter nederst */
+.treatment-price {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  min-height: 86px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.treatment-amount,
+.price {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums lining-nums;
+  white-space: nowrap;
+}
+.treatment-amount {
+  display: block;
+  margin-bottom: 6px;
+}
+.treatment-note {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+/* Eyeliner hover-swap: variant-prisliste over standard-pris */
+.treatment-eyeliner { position: relative; }
+.treatment-eyeliner .treatment-price-variants {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  bottom: 32px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  background: var(--cream);
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity .35s ease, transform .35s ease;
+}
+.treatment-eyeliner .treatment-price-default {
+  transition: opacity .35s ease;
+}
+.treatment-eyeliner:hover .treatment-price-default,
+.treatment-eyeliner:focus-within .treatment-price-default {
+  opacity: 0;
+}
+.treatment-eyeliner:hover .treatment-price-variants,
+.treatment-eyeliner:focus-within .treatment-price-variants {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 .treatment-variants {
   list-style: none;
   padding: 0;
-  margin: 0 0 18px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  margin: 0;
 }
 .treatment-variants li {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 10px 0;
-  font-size: 0.92rem;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 0.9rem;
   color: var(--ink-soft);
   border-bottom: 1px dashed var(--line);
 }
-.treatment-variants li:last-child { border-bottom: 0; }
-.treatment-variants li span:last-child {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  color: var(--accent-deep);
-  font-weight: 500;
-  margin-left: 12px;
+.treatment-variants li:last-child { border-bottom: 0; padding-bottom: 0; }
+.treatment-variants .price {
+  font-size: 1rem;
 }
-.treatment-price {
-  margin-top: auto;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-  text-align: center;
-}
-.treatment-amount {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.1rem, 4vw, 2.6rem);
-  color: var(--accent-deep);
-  font-weight: 500;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.treatment-note {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--muted);
-  letter-spacing: 0.02em;
+
+/* Touch-enheter har ikke hover - vis variantene under default-prisen */
+@media (hover: none) {
+  .treatment-eyeliner .treatment-price-variants {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    margin-top: 18px;
+    background: transparent;
+    border-top: 1px dashed var(--line);
+  }
+  .treatment-eyeliner .treatment-price-default { display: none; }
 }
 
 /* Priser – tilleggsinfo */
@@ -537,9 +601,9 @@ p { margin: 0 0 1em; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  padding: 13px 22px;
-  font-size: 0.94rem;
+  gap: 20px;
+  padding: 14px 24px;
+  font-size: 0.95rem;
   color: var(--ink-soft);
   border-bottom: 1px solid var(--line);
   cursor: pointer;
@@ -553,12 +617,9 @@ p { margin: 0 0 1em; }
   border-right: 1px solid var(--line);
 }
 .price-extras-list li:nth-last-child(-n+2) { border-bottom: 0; }
-.price-extras-list li span:last-child {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.12rem;
-  color: var(--accent-deep);
-  font-weight: 500;
-  white-space: nowrap;
+.price-extras-list li .price {
+  font-size: 1rem;
+  color: var(--ink);
 }
 @media (max-width: 720px) {
   .price-extras { margin-top: 40px; }
@@ -568,23 +629,23 @@ p { margin: 0 0 1em; }
   .treatment { padding: 32px 24px 28px; }
 }
 
-/* CTA-rad nederst i Behandling-seksjonen */
+/* CTA-rad i Behandling-seksjonen */
 .cta-row {
-  margin-top: 56px;
+  margin-top: 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   text-align: center;
 }
 .cta-row-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
   color: var(--ink);
   margin: 0;
   font-style: italic;
 }
-.cta-row .btn { padding: 16px 32px; font-size: 1rem; }
+.cta-row .btn { padding: 16px 36px; font-size: 1rem; }
 
 /* Sticky mobil-CTA */
 .mobile-cta { display: none; }
@@ -744,10 +805,12 @@ p { margin: 0 0 1em; }
   font-size: 0.95rem;
 }
 .reviews-link a {
-  color: var(--accent-deep);
-  border-bottom: 1px solid currentColor;
+  color: var(--ink);
+  border-bottom: 1px solid var(--accent);
   padding-bottom: 2px;
+  font-weight: 500;
 }
+.reviews-link a:hover { color: var(--accent); }
 
 .faq-cta {
   margin: 32px auto 0;
@@ -847,40 +910,6 @@ p { margin: 0 0 1em; }
 /* Contact */
 .section-contact .grid-2 { align-items: start; }
 .section-contact .stack { padding-top: 8px; }
-
-.contact-promise {
-  margin-top: 36px;
-  padding: 24px 26px;
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-.contact-promise h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin: 0 0 12px;
-  color: var(--ink);
-}
-.contact-promise ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.contact-promise li {
-  position: relative;
-  padding: 6px 0 6px 26px;
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-}
-.contact-promise li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 6px;
-  color: var(--cta);
-  font-weight: 600;
-}
 
 .contact-list {
   list-style: none;
