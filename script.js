@@ -69,67 +69,72 @@ document.querySelectorAll('[data-treatment]').forEach((el) => {
   }
 });
 
-// Reviews carousel
+// Reviews carousel – infinite loop, always 3 visible, shift 2 per click
 (function () {
   const carousel = document.querySelector('.reviews-carousel');
   if (!carousel) return;
   const track = carousel.querySelector('.reviews-track');
-  const slides = Array.from(track.children);
   const prevBtn = carousel.querySelector('.reviews-prev');
   const nextBtn = carousel.querySelector('.reviews-next');
-  const dotsWrap = document.querySelector('.reviews-dots');
 
-  let page = 0;
+  const orig = Array.from(track.children);
+  const N = orig.length;
 
-  const perPage = () => {
+  // Build track: [N pre-clones, N originals, N post-clones]
+  const preFrag = document.createDocumentFragment();
+  const postFrag = document.createDocumentFragment();
+  orig.forEach(s => preFrag.appendChild(s.cloneNode(true)));
+  orig.forEach(s => postFrag.appendChild(s.cloneNode(true)));
+  track.insertBefore(preFrag, track.firstChild);
+  track.appendChild(postFrag);
+
+  const all = Array.from(track.children); // 3*N slides total
+  let cur = N; // index of leftmost visible slide (start at first original)
+  let busy = false;
+
+  function perPage() {
     if (window.innerWidth <= 599) return 1;
     if (window.innerWidth <= 819) return 2;
     return 3;
-  };
-  const pageCount = () => Math.ceil(slides.length / perPage());
-
-  function buildDots() {
-    if (!dotsWrap) return;
-    dotsWrap.innerHTML = '';
-    const count = pageCount();
-    if (count <= 1) return;
-    for (let i = 0; i < count; i++) {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', 'Vis anmeldelser ' + (i + 1));
-      dot.addEventListener('click', () => { page = i; update(); });
-      dotsWrap.appendChild(dot);
-    }
   }
 
-  function update() {
-    const count = pageCount();
-    if (page >= count) page = 0;
-    if (page < 0) page = count - 1;
-    const targetIndex = Math.min(page * perPage(), slides.length - 1);
-    const offset = slides[targetIndex].offsetLeft - slides[0].offsetLeft;
-    track.style.transform = 'translateX(' + -offset + 'px)';
-
-    if (prevBtn) prevBtn.classList.toggle('hidden', page === 0 || count <= 1);
-    if (nextBtn) nextBtn.classList.toggle('hidden', count <= 1);
-    if (dotsWrap) {
-      Array.from(dotsWrap.children).forEach((d, i) =>
-        d.classList.toggle('active', i === page)
-      );
-    }
+  function snapTo(i) {
+    cur = i;
+    track.style.transition = 'none';
+    void track.offsetWidth;
+    track.style.transform = 'translateX(' + -all[i].offsetLeft + 'px)';
   }
 
-  if (nextBtn) nextBtn.addEventListener('click', () => { page++; update(); });
-  if (prevBtn) prevBtn.addEventListener('click', () => { page--; update(); });
+  function slideTo(i) {
+    cur = i;
+    track.style.transition = 'transform .5s cubic-bezier(.4, 0, .2, 1)';
+    track.style.transform = 'translateX(' + -all[i].offsetLeft + 'px)';
+  }
+
+  track.addEventListener('transitionend', () => {
+    busy = false;
+    if (cur >= 2 * N) snapTo(cur - N);
+    else if (cur < N) snapTo(cur + N);
+  });
+
+  function go(dir) {
+    if (busy) return;
+    busy = true;
+    const step = perPage() >= 3 ? 2 : 1;
+    slideTo(cur + dir * step);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => go(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => go(1));
+  [prevBtn, nextBtn].forEach(b => { if (b) b.classList.remove('hidden'); });
 
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => { buildDots(); update(); }, 150);
+    resizeTimer = setTimeout(() => snapTo(cur), 150);
   });
 
-  buildDots();
-  update();
+  snapTo(N);
 })();
 
 // Contact form – Web3Forms submission with GDPR check
