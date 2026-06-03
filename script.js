@@ -17,7 +17,7 @@ if (toggle && navList) {
 
 // Reveal-on-scroll – triggers as soon as element edges into view
 const revealTargets = document.querySelectorAll(
-  '.section-head, .treatment, .price-extras, .steps li, .quote, .faq-item, .contact-form, .portrait, .stack'
+  '.section-head, .treatment, .price-extras, .steps li, .reviews-carousel, .faq-item, .contact-form, .portrait, .stack'
 );
 revealTargets.forEach((el) => el.classList.add('reveal'));
 
@@ -68,6 +68,69 @@ document.querySelectorAll('[data-treatment]').forEach((el) => {
     el.addEventListener('keydown', handler);
   }
 });
+
+// Reviews carousel
+(function () {
+  const carousel = document.querySelector('.reviews-carousel');
+  if (!carousel) return;
+  const track = carousel.querySelector('.reviews-track');
+  const slides = Array.from(track.children);
+  const prevBtn = carousel.querySelector('.reviews-prev');
+  const nextBtn = carousel.querySelector('.reviews-next');
+  const dotsWrap = document.querySelector('.reviews-dots');
+
+  let page = 0;
+
+  const perPage = () => {
+    if (window.innerWidth <= 599) return 1;
+    if (window.innerWidth <= 819) return 2;
+    return 3;
+  };
+  const pageCount = () => Math.ceil(slides.length / perPage());
+
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    const count = pageCount();
+    if (count <= 1) return;
+    for (let i = 0; i < count; i++) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Vis anmeldelser ' + (i + 1));
+      dot.addEventListener('click', () => { page = i; update(); });
+      dotsWrap.appendChild(dot);
+    }
+  }
+
+  function update() {
+    const count = pageCount();
+    if (page >= count) page = 0;
+    if (page < 0) page = count - 1;
+    const targetIndex = Math.min(page * perPage(), slides.length - 1);
+    const offset = slides[targetIndex].offsetLeft - slides[0].offsetLeft;
+    track.style.transform = 'translateX(' + -offset + 'px)';
+
+    const hide = count <= 1;
+    [prevBtn, nextBtn].forEach((b) => { if (b) b.style.display = hide ? 'none' : ''; });
+    if (dotsWrap) {
+      Array.from(dotsWrap.children).forEach((d, i) =>
+        d.classList.toggle('active', i === page)
+      );
+    }
+  }
+
+  if (nextBtn) nextBtn.addEventListener('click', () => { page++; update(); });
+  if (prevBtn) prevBtn.addEventListener('click', () => { page--; update(); });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { buildDots(); update(); }, 150);
+  });
+
+  buildDots();
+  update();
+})();
 
 // Contact form – Web3Forms submission with GDPR check
 const form = document.querySelector('.contact-form');
