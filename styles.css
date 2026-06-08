@@ -275,7 +275,7 @@ p { margin: 0 0 1em; }
   height: 100%;
   object-fit: cover;
   object-position: 55% 16%;
-  border-radius: 5px;
+  border-radius: 14px;
   /* Soft fade on every side — wide/strong on the left, gentle on the
      top, right and bottom — so the portrait dissolves into the warm
      background with no hard edges. */
