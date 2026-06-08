@@ -131,16 +131,15 @@ p { margin: 0 0 1em; }
   font-weight: 400;
 }
 .brand-sub {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
   color: var(--muted);
   margin-top: 6px;
-  font-weight: 500;
+  font-weight: 400;
 }
 @media (max-width: 720px) {
   .brand-main { font-size: 1.85rem; }
-  .brand-sub { font-size: 0.6rem; letter-spacing: 0.22em; }
+  .brand-sub { font-size: 0.7rem; letter-spacing: 0.03em; }
 }
 
 .nav-list {
