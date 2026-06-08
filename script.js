@@ -38,6 +38,22 @@ revealTargets.forEach((el) => io.observe(el));
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// Sticky mobile CTA – appear after scrolling a bit, hidden at very top
+(function () {
+  if (!document.querySelector('.mobile-cta')) return;
+  const threshold = 160;
+  let ticking = false;
+  const update = () => {
+    if (window.scrollY > threshold) document.body.classList.add('show-mobile-cta');
+    else document.body.classList.remove('show-mobile-cta');
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
+})();
+
 // Pre-fill behandling-dropdown when clicking treatment cards / extra rows / faq-CTA
 function jumpToContact(treatment) {
   const select = document.getElementById('treatment');
