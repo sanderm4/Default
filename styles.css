@@ -260,6 +260,8 @@ p { margin: 0 0 1em; }
 }
 .hero-text .lede {
   margin-top: 1.25rem;
+  line-height: 1.55;
+  max-width: 52ch;
 }
 .hero-image {
   position: relative;
