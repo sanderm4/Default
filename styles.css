@@ -263,6 +263,62 @@ p { margin: 0 0 1em; }
   line-height: 1.55;
   max-width: 52ch;
 }
+
+.hero-trust {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 1.4rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.hero-trust:hover { color: var(--ink); }
+.hero-trust-stars {
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+.hero-trust-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--ink-soft);
+}
+.hero-trust-source {
+  position: relative;
+  padding-left: 14px;
+}
+.hero-trust-source::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.45;
+}
+
+.reviews-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.reviews-rating-stars {
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 1.1rem;
+  line-height: 1;
+}
 .hero-image {
   position: relative;
   width: 100%;
