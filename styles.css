@@ -102,7 +102,13 @@ p { margin: 0 0 1em; }
   z-index: 40;
   background: rgba(255, 252, 247, 0.94);
   backdrop-filter: saturate(1.1) blur(12px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
+}
+body.scrolled .site-header {
+  background: rgba(255, 252, 247, 0.97);
+  border-bottom-color: var(--line);
+  box-shadow: 0 10px 30px -18px rgba(40, 22, 12, 0.3);
 }
 .header-inner {
   display: flex;
@@ -111,6 +117,11 @@ p { margin: 0 0 1em; }
   padding-top: 18px;
   padding-bottom: 18px;
   gap: 24px;
+  transition: padding .3s ease;
+}
+body.scrolled .header-inner {
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 .brand {
   display: flex;

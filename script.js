@@ -38,14 +38,17 @@ revealTargets.forEach((el) => io.observe(el));
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Sticky mobile CTA – appear after scrolling a bit, hidden at very top
+// Scroll state – compact header after a few px, sticky mobile CTA further down
 (function () {
-  if (!document.querySelector('.mobile-cta')) return;
-  const threshold = 160;
+  const hasMobileCta = !!document.querySelector('.mobile-cta');
+  const ctaThreshold = 160;
   let ticking = false;
   const update = () => {
-    if (window.scrollY > threshold) document.body.classList.add('show-mobile-cta');
-    else document.body.classList.remove('show-mobile-cta');
+    const y = window.scrollY;
+    document.body.classList.toggle('scrolled', y > 12);
+    if (hasMobileCta) {
+      document.body.classList.toggle('show-mobile-cta', y > ctaThreshold);
+    }
     ticking = false;
   };
   window.addEventListener('scroll', () => {
