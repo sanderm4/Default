@@ -269,10 +269,8 @@ p { margin: 0 0 1em; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
   gap: 6px 14px;
   margin-top: 1.6rem;
-  text-align: center;
 }
 .hero-trust-rating {
   display: inline-flex;
