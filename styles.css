@@ -264,11 +264,12 @@ body.scrolled .header-inner {
 }
 #hero-title {
   line-height: 1.05;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.5px;
   margin-bottom: 0;
+  text-wrap: balance;
 }
 #hero-title em {
-  margin-top: 0.16em;
+  margin-top: 0.08em;
 }
 .hero-text .lede {
   margin-top: 1.25rem;
