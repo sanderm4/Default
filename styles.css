@@ -13,6 +13,7 @@
   --cta: #46301f;
   --cta-hover: #2e1d11;
   --gold: #c9a27a;
+  --star: #fbbc04;
   --shadow: 0 20px 60px -30px rgba(40, 22, 12, 0.35);
   --radius: 18px;
   --radius-lg: 28px;
@@ -267,54 +268,36 @@ p { margin: 0 0 1em; }
 .hero-trust {
   display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px 12px;
+  gap: 10px;
   margin-top: 1.4rem;
-  font-size: 0.9rem;
-  color: var(--muted);
+  font-size: 0.98rem;
+  color: var(--ink-soft);
   text-decoration: none;
   transition: color .2s ease;
 }
 .hero-trust:hover { color: var(--ink); }
 .hero-trust-stars {
-  color: var(--gold);
+  color: var(--star);
   letter-spacing: 2px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1;
 }
-.hero-trust-quote {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.02rem;
-  color: var(--ink-soft);
-}
-.hero-trust-source {
-  position: relative;
-  padding-left: 14px;
-}
-.hero-trust-source::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0.45;
+.hero-trust-text {
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .reviews-rating {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 8px;
-  font-size: 0.95rem;
-  color: var(--muted);
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  font-weight: 500;
 }
 .reviews-rating-stars {
-  color: var(--gold);
+  color: var(--star);
   letter-spacing: 3px;
   font-size: 1.1rem;
   line-height: 1;
@@ -977,7 +960,7 @@ p { margin: 0 0 1em; }
   line-height: 1;
 }
 .quote-stars {
-  color: #d4a341;
+  color: var(--star);
   font-size: 1rem;
   letter-spacing: 0.18em;
   margin-bottom: 10px;
